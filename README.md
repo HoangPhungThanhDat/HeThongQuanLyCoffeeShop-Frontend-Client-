@@ -2,7 +2,7 @@
 
 <img src="public/iconcoffee.png" alt="Coffee Shop Logo" width="96" />
 
-# ☕ Coffee Shop User
+#  Coffee Shop Client
 
 ### Giao diện khách hàng của hệ thống quản lý quán cà phê
 
@@ -284,7 +284,7 @@ Sao chép `.env.example` thành `.env` rồi cấu hình các biến cần thi�
 
 ## 👤 Tác giả
 
-**Hoàng Phùng Thanh Đạt** *(Hoàng Đạt Coder)*
+**Hoàng Phùng Thanh Đạt** *(Hoàng Đạt Engineer)*
 
 [![Email](https://img.shields.io/badge/Email-dat147714%40gmail.com-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:dat147714@gmail.com)
 [![GitHub](https://img.shields.io/badge/GitHub-HoangPhungThanhDat-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/HoangPhungThanhDat)
