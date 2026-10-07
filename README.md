@@ -40,7 +40,7 @@
 
 ## 📖 Giới thiệu
 
-**Coffee Shop User** là ứng dụng web dành cho **khách hàng** trong hệ thống quản lý quán cà phê. Khách có thể chọn bàn, khám phá thực đơn, gọi món, theo dõi tiến trình đơn hàng và thanh toán trực tuyến ngay trên trình duyệt — **không cần cài đặt ứng dụng**.
+**Coffee Shop Client** là ứng dụng web dành cho **khách hàng** trong hệ thống quản lý quán cà phê. Khách có thể chọn bàn, khám phá thực đơn, gọi món, theo dõi tiến trình đơn hàng và thanh toán trực tuyến ngay trên trình duyệt — **không cần cài đặt ứng dụng**.
 
 Dự án được xây dựng theo kiến trúc **feature-based**: mỗi nghiệp vụ (`table`, `menu`, `cart`, `order`, `payment`, `review`...) là một module độc lập gồm component, hook, service và style riêng, giúp dễ mở rộng, bảo trì và làm việc nhóm.
 
@@ -286,7 +286,7 @@ Sao chép `.env.example` thành `.env` rồi cấu hình các biến cần thi�
 
 **Hoàng Phùng Thanh Đạt** *(Hoàng Đạt Engineer)*
 
-[![Email](https://img.shields.io/badge/Email-dat147714%40gmail.com-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:dat147714@gmail.com)
+[![Email](https://img.shields.io/badge/Email-hoangdat.engineer%40gmail.com-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:hoangdat.engineer@gmail.com)
 [![GitHub](https://img.shields.io/badge/GitHub-HoangPhungThanhDat-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/HoangPhungThanhDat)
 
 ---
