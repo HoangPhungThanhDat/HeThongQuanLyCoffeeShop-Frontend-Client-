@@ -1,0 +1,29 @@
+{
+  "name": "Coffee Shop - Đặt món trực tuyến",
+  "short_name": "Coffee Shop",
+  "description": "Ứng dụng đặt món cà phê trực tuyến - Nhanh chóng và tiện lợi",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#faf6f1",
+  "theme_color": "#8B5E3C",
+  "lang": "vi-VN",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/icons/iconcoffee.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/iconcoffee.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["food", "shopping", "lifestyle"],
+  "screenshots": [],
+  "prefer_related_applications": false
+}

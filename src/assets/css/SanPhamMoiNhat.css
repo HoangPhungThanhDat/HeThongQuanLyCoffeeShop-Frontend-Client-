@@ -1,0 +1,749 @@
+/* =========================================
+   NEW PRODUCTS SECTION - PROFESSIONAL DESIGN
+   ========================================= */
+
+   .new-products-section {
+    position: relative;
+    padding: 100px 0 80px;
+    background: linear-gradient(135deg, #faf7f2 0%, #f5efe6 50%, #faf7f2 100%);
+    overflow: hidden;
+  }
+  
+  /* =========================================
+     BACKGROUND DECOR
+     ========================================= */
+  .np-bg-decor {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  
+  .np-circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+  }
+  
+  .np-circle-1 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, #c8a27a 0%, transparent 70%);
+    top: -100px;
+    right: -100px;
+    animation: npFloat 12s ease-in-out infinite;
+  }
+  
+  .np-circle-2 {
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, #8b5e3c 0%, transparent 70%);
+    bottom: -80px;
+    left: -80px;
+    animation: npFloat 15s ease-in-out infinite reverse;
+  }
+  
+  .np-circle-3 {
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, #d4a574 0%, transparent 70%);
+    top: 40%;
+    left: 45%;
+    opacity: 0.2;
+    animation: npFloat 18s ease-in-out infinite;
+  }
+  
+  @keyframes npFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(30px, -30px) scale(1.1); }
+  }
+  
+  /* =========================================
+     HEADER
+     ========================================= */
+  .np-header {
+    position: relative;
+    z-index: 2;
+    max-width: 720px;
+    margin: 0 auto 20px;
+  }
+  
+  .np-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    background: linear-gradient(135deg, #3e2723, #5d4037);
+    color: #f5e6d3;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 20px rgba(62, 39, 35, 0.25);
+    animation: npFadeInDown 0.6s ease-out;
+  }
+  
+  .np-badge i {
+    color: #ffc107;
+    font-size: 14px;
+  }
+  
+  .np-title {
+    font-size: clamp(1.8rem, 4vw, 2.75rem);
+    font-weight: 800;
+    color: #2c1810;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    animation: npFadeInUp 0.6s ease-out;
+  }
+  
+  .np-title-highlight {
+    position: relative;
+    background: linear-gradient(135deg, #8b5e3c, #c8a27a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+  }
+  
+  .np-title-highlight::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(90deg, transparent, #c8a27a, transparent);
+    border-radius: 4px;
+    opacity: 0.5;
+  }
+  
+  .np-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 20px 0;
+    animation: npFadeIn 0.8s ease-out;
+  }
+  
+  .np-divider-line {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #c8a27a, transparent);
+  }
+  
+  .np-divider-icon {
+    color: #8b5e3c;
+    font-size: 24px;
+    animation: npSteam 3s ease-in-out infinite;
+  }
+  
+  @keyframes npSteam {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+  
+  .np-subtitle {
+    color: #6b5b4d;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin: 0;
+    animation: npFadeInUp 0.8s ease-out;
+  }
+  
+  /* =========================================
+     SWIPER WRAPPER (chứa nav + swiper)
+     ========================================= */
+  .np-swiper-wrapper {
+    position: relative;
+    margin-top: 60px;
+    padding: 0 60px; /* chừa chỗ cho nav buttons nằm ngoài rìa card */
+  }
+  
+  .np-swiper {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 60px; /* chừa chỗ cho pagination */
+  }
+  
+  .np-swiper .swiper-wrapper {
+    align-items: stretch;
+  }
+  
+  .np-swiper .swiper-slide {
+    height: auto;
+    display: flex;
+  }
+  
+  /* =========================================
+     NAVIGATION BUTTONS (nằm ngoài rìa)
+     ========================================= */
+  .np-nav-btn {
+    position: absolute;
+    top: 40%; /* căn theo phần ảnh card */
+    transform: translateY(-50%);
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    color: #3e2723;
+    border: 1px solid rgba(200, 162, 122, 0.3);
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 20;
+    outline: none;
+    box-shadow:
+      0 4px 12px rgba(62, 39, 35, 0.08),
+      0 8px 24px rgba(62, 39, 35, 0.1);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Vị trí 2 nút */
+  .np-nav-prev {
+    left: 0;
+  }
+  
+  .np-nav-next {
+    right: 0;
+  }
+  
+  /* Hover */
+  .np-nav-btn:hover {
+    background: linear-gradient(135deg, #3e2723, #5d4037);
+    color: #fff;
+    border-color: transparent;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow:
+      0 8px 20px rgba(62, 39, 35, 0.22),
+      0 12px 32px rgba(62, 39, 35, 0.18);
+  }
+  
+  .np-nav-btn:active {
+    transform: translateY(-50%) scale(0.95);
+  }
+  
+  /* Focus cho accessibility */
+  .np-nav-btn:focus-visible {
+    outline: 2px solid #8b5e3c;
+    outline-offset: 3px;
+  }
+  
+  /* Icon dịch chuyển khi hover */
+  .np-nav-btn i {
+    font-size: 18px;
+    font-weight: 700;
+    transition: transform 0.3s ease;
+  }
+  
+  .np-nav-prev:hover i {
+    transform: translateX(-3px);
+  }
+  
+  .np-nav-next:hover i {
+    transform: translateX(3px);
+  }
+  
+  /* Trạng thái disabled (khi hết slide) */
+  .np-nav-btn.swiper-button-disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  
+  /* =========================================
+     PRODUCT CARD
+     ========================================= */
+  .product-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(62, 39, 35, 0.08);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(200, 162, 122, 0.15);
+  }
+  
+  .product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(62, 39, 35, 0.18);
+    border-color: rgba(200, 162, 122, 0.4);
+  }
+  
+  /* Image wrapper */
+  .product-card-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    background: #f5efe6;
+  }
+  
+  .product-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .product-card:hover .product-card-image {
+    transform: scale(1.1);
+  }
+  
+  .product-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      transparent 50%,
+      rgba(44, 24, 16, 0.7) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+  
+  .product-card:hover .product-card-overlay {
+    opacity: 1;
+  }
+  
+  /* Badge Hot */
+  .product-card-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border-radius: 50px;
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
+    z-index: 2;
+  }
+  
+  .product-card-badge i {
+    font-size: 11px;
+  }
+  
+  /* Quick action buttons */
+  .product-card-actions {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 2;
+  }
+  
+  .product-card:hover .product-card-actions {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .action-btn {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.95);
+    color: #3e2723;
+    border: none;
+    border-radius: 50%;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(10px);
+  }
+  
+  .action-btn:hover {
+    background: #3e2723;
+    color: #fff;
+    transform: scale(1.12);
+  }
+  
+  /* Body */
+  .product-card-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 20px 20px 22px;
+  }
+  
+  .product-card-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #2c1810;
+    margin-bottom: 10px;
+    line-height: 1.35;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 2.7em;
+    transition: color 0.3s ease;
+  }
+  
+  .product-card:hover .product-card-title {
+    color: #8b5e3c;
+  }
+  
+  .product-card-desc {
+    font-size: 0.85rem;
+    color: #8a7a6d;
+    line-height: 1.55;
+    margin-bottom: 16px;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  /* Footer */
+  .product-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 14px;
+    border-top: 1px dashed rgba(200, 162, 122, 0.3);
+    margin-top: auto;
+  }
+  
+  .product-card-price {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+    color: #8b5e3c;
+    font-weight: 800;
+    line-height: 1;
+  }
+  
+  .price-value {
+    font-size: 1.2rem;
+    letter-spacing: -0.3px;
+  }
+  
+  .price-currency {
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+  
+  /* Button Đặt ngay */
+  .product-card-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 16px;
+    background: linear-gradient(135deg, #3e2723, #5d4037);
+    color: #fff !important;
+    font-size: 0.82rem;
+    font-weight: 600;
+    border-radius: 50px;
+    text-decoration: none !important;
+    white-space: nowrap;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(62, 39, 35, 0.2);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .product-card-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #c8a27a, #8b5e3c);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
+  
+  .product-card-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(139, 94, 60, 0.35);
+  }
+  
+  .product-card-btn:hover::before {
+    opacity: 1;
+  }
+  
+  .product-card-btn i {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+  }
+  
+  .product-card-btn:hover i {
+    transform: translate(2px, -2px);
+  }
+  
+  /* =========================================
+     PAGINATION
+     ========================================= */
+  .np-pagination {
+    bottom: 10px !important;
+  }
+  
+  .np-pagination .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    background: #c8a27a;
+    opacity: 0.4;
+    transition: all 0.3s ease;
+    margin: 0 4px !important;
+  }
+  
+  .np-pagination .swiper-pagination-bullet-active {
+    background: #8b5e3c;
+    opacity: 1;
+    width: 28px;
+    border-radius: 4px;
+  }
+  
+  /* =========================================
+     CTA BUTTON
+     ========================================= */
+  .np-cta {
+    margin-top: 40px;
+  }
+  
+  .np-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    background: transparent;
+    color: #3e2723 !important;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border: 2px solid #3e2723;
+    border-radius: 50px;
+    text-decoration: none !important;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .np-cta-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #3e2723, #5d4037);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
+  }
+  
+  .np-cta-btn:hover {
+    color: #fff !important;
+    border-color: #3e2723;
+  }
+  
+  .np-cta-btn:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  
+  .np-cta-btn i {
+    transition: transform 0.3s ease;
+  }
+  
+  .np-cta-btn:hover i {
+    transform: translateX(4px);
+  }
+  
+  /* =========================================
+     SKELETON LOADING
+     ========================================= */
+  .skeleton-card {
+    pointer-events: none;
+  }
+  
+  .skeleton-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: linear-gradient(90deg, #f0e8dd 25%, #f8f3ec 50%, #f0e8dd 75%);
+    background-size: 200% 100%;
+    animation: npShimmer 1.5s infinite;
+  }
+  
+  .skeleton-line {
+    height: 14px;
+    border-radius: 6px;
+    background: linear-gradient(90deg, #f0e8dd 25%, #f8f3ec 50%, #f0e8dd 75%);
+    background-size: 200% 100%;
+    animation: npShimmer 1.5s infinite;
+    margin-bottom: 10px;
+  }
+  
+  .skeleton-title { height: 18px; width: 80%; }
+  .skeleton-text { width: 100%; }
+  .skeleton-text.short { width: 60%; }
+  .skeleton-price { height: 20px; width: 40%; margin-top: 16px; }
+  .skeleton-btn {
+    height: 36px;
+    width: 100px;
+    border-radius: 50px;
+    margin-left: auto;
+  }
+  
+  @keyframes npShimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+  
+  /* =========================================
+     EMPTY STATE
+     ========================================= */
+  .np-empty {
+    width: 100%;
+    text-align: center;
+    padding: 60px 20px;
+    color: #8a7a6d;
+  }
+  
+  .np-empty i {
+    font-size: 3rem;
+    color: #c8a27a;
+    display: block;
+    margin-bottom: 16px;
+  }
+  
+  /* =========================================
+     ANIMATIONS
+     ========================================= */
+  @keyframes npFadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes npFadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes npFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  /* =========================================
+     RESPONSIVE
+     ========================================= */
+  
+  /* Tablet lớn */
+  @media (max-width: 1400px) {
+    .np-swiper-wrapper {
+      padding: 0 50px;
+    }
+    .np-nav-btn {
+      width: 48px;
+      height: 48px;
+    }
+  }
+  
+  /* Tablet */
+  @media (max-width: 1200px) {
+    .np-swiper-wrapper {
+      padding: 0 44px;
+    }
+    .np-nav-btn {
+      width: 44px;
+      height: 44px;
+      font-size: 16px;
+    }
+    .np-nav-btn i {
+      font-size: 16px;
+    }
+  }
+  
+  /* Tablet nhỏ */
+  @media (max-width: 991px) {
+    .new-products-section {
+      padding: 80px 0 60px;
+    }
+    .np-swiper-wrapper {
+      padding: 0 40px;
+    }
+    .np-nav-btn {
+      width: 40px;
+      height: 40px;
+    }
+    .np-nav-btn i {
+      font-size: 15px;
+    }
+  }
+  
+  /* Mobile: ẩn nút điều hướng, dùng swipe */
+  @media (max-width: 767px) {
+    .new-products-section {
+      padding: 60px 0 50px;
+    }
+    .np-title {
+      font-size: 1.6rem;
+    }
+    .np-subtitle {
+      font-size: 0.95rem;
+    }
+    .np-swiper-wrapper {
+      padding: 0; /* bỏ padding vì đã ẩn nav */
+      margin-top: 40px;
+    }
+    .np-nav-btn {
+      display: none;
+    }
+    .product-card-body {
+      padding: 16px;
+    }
+    .product-card-title {
+      font-size: 0.95rem;
+    }
+    .price-value {
+      font-size: 1.05rem;
+    }
+    .product-card-btn {
+      padding: 8px 14px;
+      font-size: 0.78rem;
+    }
+  }
+  
+  /* Mobile nhỏ */
+  @media (max-width: 400px) {
+    .product-card-footer {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+    }
+    .product-card-btn {
+      justify-content: center;
+      width: 100%;
+    }
+    .np-cta-btn {
+      padding: 12px 24px;
+      font-size: 0.85rem;
+    }
+  }

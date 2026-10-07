@@ -1,0 +1,49 @@
+body {
+  background-color: #3e2723;
+  color: #fff;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.text-coffee {
+  color: #5c4033;
+}
+
+.btn-coffee {
+  background-color: #5c4033;
+  color: #fff;
+  transition: all 0.3s ease;
+  border: none;
+  border-radius: 10px;
+}
+
+.btn-coffee:hover {
+  background-color: #3e2c24;
+  transform: scale(1.03);
+}
+
+.cart-item-card {
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.cart-item-card:hover {
+  transform: scale(1.01);
+  box-shadow: 0 4px 12px rgba(92, 64, 51, 0.2);
+}
+
+.cart-img {
+  max-height: 100px;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .cart-img {
+    max-height: 80px;
+  }
+  .btn-coffee {
+    font-size: 14px;
+  }
+}
+
+
+

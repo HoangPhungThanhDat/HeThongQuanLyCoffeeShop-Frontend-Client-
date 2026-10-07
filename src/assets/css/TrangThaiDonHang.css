@@ -1,0 +1,2260 @@
+/* =========================================
+   ORDER TRACKING - LIGHT THEME (FINAL)
+   Đã fix lỗi mobile bị dồn về bên phải
+   ========================================= */
+
+/* ---------- GLOBAL RESET CHO WRAPPER ---------- */
+.ot-wrapper,
+.ot-wrapper * {
+  box-sizing: border-box;
+}
+
+.ot-wrapper {
+  position: relative;
+  min-height: 100vh;
+  padding: 24px 0 80px;
+  background: linear-gradient(135deg, #faf7f2 0%, #f5efe6 50%, #faf7f2 100%);
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* ✅ FIX: Container có padding đều 2 bên trên MỌI màn hình */
+.ot-wrapper .container,
+.ot-wrapper .container-fluid {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 100%;
+}
+
+/* ---------- BG DECOR ---------- */
+.ot-bg-decor {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.ot-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.4;
+}
+
+.ot-blob-1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #f5d99f 0%, transparent 70%);
+  top: -150px;
+  right: -150px;
+  animation: otFloat 15s ease-in-out infinite;
+}
+
+.ot-blob-2 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #e8c9a0 0%, transparent 70%);
+  bottom: -100px;
+  left: -100px;
+  animation: otFloat 18s ease-in-out infinite reverse;
+}
+
+.ot-blob-3 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, #f0e2cc 0%, transparent 70%);
+  top: 40%;
+  left: 45%;
+  opacity: 0.3;
+  animation: otFloat 20s ease-in-out infinite;
+}
+
+@keyframes otFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, -40px) scale(1.1); }
+}
+
+/* ---------- CONNECTION STATUS ---------- */
+.ot-connection-status {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  background: #fef2f2;
+  color: #991b1b;
+  padding: 10px 18px;
+  border-radius: 12px;
+  border: 1px solid #fecaca;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 1000;
+  font-size: 0.85rem;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.15);
+}
+
+/* ---------- TOP BAR ---------- */
+.ot-top-bar {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  padding: 16px 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(62, 39, 35, 0.06);
+  border: 1px solid rgba(200, 162, 122, 0.15);
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.ot-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.ot-back-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  border: none;
+  background: #faf7f2;
+  color: #8b5e3c;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: inherit;
+  flex-shrink: 0;
+}
+
+.ot-back-btn:hover {
+  background: linear-gradient(135deg, #8b5e3c, #5d4037);
+  color: #fff;
+  transform: translateX(-4px);
+  box-shadow: 0 6px 16px rgba(139, 94, 60, 0.25);
+}
+
+.ot-brand-divider {
+  width: 1px;
+  height: 32px;
+  background: rgba(200, 162, 122, 0.3);
+}
+
+.ot-brand-icon {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, #8b5e3c, #5d4037);
+  color: #ffd700;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 16px rgba(139, 94, 60, 0.25);
+  flex-shrink: 0;
+}
+
+.ot-brand-text {
+  min-width: 0;
+}
+
+.ot-brand-text h1 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #2c1810;
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+}
+
+.ot-brand-text span {
+  font-size: 0.72rem;
+  color: #8a7a6d;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  font-weight: 700;
+}
+
+.ot-top-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.ot-connection-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+
+.ot-connection-badge.online {
+  background: rgba(0, 200, 83, 0.1);
+  color: #00a843;
+  border: 1px solid rgba(0, 200, 83, 0.25);
+}
+
+.ot-connection-badge.offline {
+  background: rgba(255, 68, 68, 0.1);
+  color: #cc0000;
+  border: 1px solid rgba(255, 68, 68, 0.25);
+}
+
+.ot-icon-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(200, 162, 122, 0.2);
+  background: #fff;
+  color: #8b5e3c;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.ot-icon-btn:hover {
+  background: #faf7f2;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(139, 94, 60, 0.12);
+}
+
+/* ---------- MAIN GRID ---------- */
+.ot-main-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 24px;
+  align-items: start;
+  width: 100%;
+}
+
+.ot-left-col,
+.ot-right-col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 0;
+  width: 100%;
+}
+
+/* ---------- CARD ---------- */
+.ot-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 4px 20px rgba(62, 39, 35, 0.06);
+  border: 1px solid rgba(200, 162, 122, 0.15);
+  width: 100%;
+}
+
+.ot-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed rgba(200, 162, 122, 0.3);
+}
+
+.ot-card-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #2c1810;
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+
+.ot-card-title svg { color: #8b5e3c; }
+
+.ot-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  flex-shrink: 0;
+}
+
+.ot-status-badge.processing {
+  background: linear-gradient(135deg, #fff3d6, #ffe8b3);
+  color: #cc8f00;
+  border: 1px solid rgba(255, 179, 0, 0.3);
+}
+
+.ot-status-badge.completed {
+  background: linear-gradient(135deg, #d9f5e3, #c4f0d4);
+  color: #00a843;
+  border: 1px solid rgba(0, 200, 83, 0.3);
+}
+
+.ot-status-badge.cancelled {
+  background: linear-gradient(135deg, #fde8e8, #f9d5d5);
+  color: #cc0000;
+  border: 1px solid rgba(255, 68, 68, 0.3);
+}
+
+/* ---------- ORDER INFO ---------- */
+.ot-order-info {
+  background: linear-gradient(135deg, #8b5e3c 0%, #5d4037 100%);
+  border-radius: 16px;
+  padding: 24px;
+  color: #fff;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(139, 94, 60, 0.25);
+}
+
+.ot-order-info::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.15) 0%, transparent 60%);
+  animation: otShimmer 6s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes otShimmer {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-20%, 20%); }
+}
+
+.ot-order-number {
+  font-size: 1.6rem;
+  font-weight: 900;
+  margin-bottom: 18px;
+  letter-spacing: -0.5px;
+  position: relative;
+  z-index: 1;
+}
+
+.ot-order-hash {
+  color: #ffd700;
+  margin-right: 4px;
+}
+
+.ot-order-meta {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.ot-meta-item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  min-width: 0;
+}
+
+.ot-meta-icon {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #ffd700;
+}
+
+.ot-meta-label {
+  font-size: 0.68rem;
+  opacity: 0.75;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.ot-meta-value {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+/* ---------- NOTE ---------- */
+.ot-note-box {
+  display: flex;
+  gap: 14px;
+  padding: 16px;
+  background: #fffaf0;
+  border-left: 4px solid #ffb300;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+.ot-note-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.ot-note-title {
+  font-weight: 800;
+  color: #cc8f00;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.ot-note-text {
+  color: #5d4037;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+/* ---------- ITEMS LIST ---------- */
+.ot-items-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #8a7a6d;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0 0 16px;
+}
+
+.ot-items-heading svg { color: #8b5e3c; }
+
+.ot-item-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  border-radius: 14px;
+  margin-bottom: 10px;
+  background: #faf7f2;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+  width: 100%;
+}
+
+.ot-item-row:hover {
+  background: #fff;
+  border-color: rgba(200, 162, 122, 0.3);
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(139, 94, 60, 0.08);
+}
+
+.ot-item-img-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.ot-item-img {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 2px solid #fff;
+  box-shadow: 0 4px 12px rgba(139, 94, 60, 0.1);
+  display: block;
+}
+
+.ot-item-qty {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  background: linear-gradient(135deg, #8b5e3c, #5d4037);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(139, 94, 60, 0.3);
+}
+
+.ot-item-info { flex: 1; min-width: 0; }
+
+.ot-item-name {
+  font-weight: 700;
+  color: #2c1810;
+  font-size: 0.98rem;
+  margin-bottom: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ot-item-unit {
+  color: #8a7a6d;
+  font-size: 0.82rem;
+}
+
+.ot-item-total {
+  font-weight: 800;
+  color: #8b5e3c;
+  font-size: 1rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.ot-items-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: #8a7a6d;
+}
+
+.ot-items-empty svg {
+  color: #c8a27a;
+  opacity: 0.5;
+  margin-bottom: 10px;
+}
+
+.ot-items-empty p {
+  margin: 0;
+  font-size: 0.92rem;
+}
+
+/* ---------- TOTAL ---------- */
+.ot-total-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  background: linear-gradient(135deg, #faf7f2, #f5efe6);
+  border-radius: 16px;
+  border: 2px solid rgba(200, 162, 122, 0.3);
+  margin: 24px 0;
+  gap: 12px;
+}
+
+.ot-total-label {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #5d4037;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ot-total-amount {
+  font-size: 1.75rem;
+  font-weight: 900;
+  color: #8b5e3c;
+  letter-spacing: -0.5px;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.ot-total-currency { font-size: 1rem; font-weight: 700; }
+
+/* ---------- BUTTONS ---------- */
+.ot-action-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.ot-btn {
+  padding: 14px 24px;
+  border-radius: 14px;
+  border: none;
+  font-weight: 800;
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: inherit;
+  letter-spacing: 0.3px;
+}
+
+.ot-btn-primary {
+  background: linear-gradient(135deg, #8b5e3c, #5d4037);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(139, 94, 60, 0.25);
+}
+
+.ot-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(139, 94, 60, 0.35);
+}
+
+.ot-btn-outline {
+  background: #fff;
+  color: #cc0000;
+  border: 2px solid rgba(255, 68, 68, 0.35);
+}
+
+.ot-btn-outline:hover {
+  background: #cc0000;
+  color: #fff;
+  border-color: #cc0000;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(204, 0, 0, 0.3);
+}
+
+/* ---------- PAYMENT ---------- */
+.ot-payment-card {
+  background: linear-gradient(180deg, #fff 0%, #fdfbf7 100%);
+}
+
+.ot-payment-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed rgba(200, 162, 122, 0.3);
+}
+
+.ot-payment-header-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #ffd700, #ffa500);
+  color: #2c1810;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 16px rgba(255, 179, 0, 0.35);
+  flex-shrink: 0;
+}
+
+.ot-payment-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #2c1810;
+  margin: 0 0 2px;
+  letter-spacing: -0.3px;
+}
+
+.ot-payment-subtitle {
+  font-size: 0.85rem;
+  color: #8a7a6d;
+  margin: 0;
+}
+
+.ot-payment-total {
+  background: linear-gradient(135deg, #8b5e3c, #5d4037);
+  border-radius: 16px;
+  padding: 22px;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(139, 94, 60, 0.25);
+}
+
+.ot-payment-total::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.15), transparent);
+  animation: otShimmer 4s linear infinite;
+}
+
+.ot-payment-total-label {
+  font-size: 0.78rem;
+  opacity: 0.85;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.ot-payment-total-amount {
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: -1px;
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.ot-payment-total-amount span { font-size: 1.1rem; font-weight: 700; }
+
+.ot-payment-methods { display: grid; gap: 12px; margin-bottom: 20px; }
+
+.ot-payment-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  background: #fff;
+  border: 2px solid rgba(200, 162, 122, 0.25);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  text-align: left;
+  font-family: inherit;
+  width: 100%;
+}
+
+.ot-payment-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  transition: left 0.6s ease;
+  pointer-events: none;
+}
+
+.ot-payment-btn:hover::before { left: 100%; }
+
+.ot-payment-btn:hover {
+  transform: translateX(6px);
+  box-shadow: 0 12px 28px rgba(62, 39, 35, 0.12);
+}
+
+.ot-payment-btn.ot-momo:hover { border-color: #a50064; background: linear-gradient(135deg, #fff5f8, #fff); }
+.ot-payment-btn.ot-vnpay:hover { border-color: #0071c2; background: linear-gradient(135deg, #f0f9ff, #fff); }
+.ot-payment-btn.ot-zalopay:hover { border-color: #0068ff; background: linear-gradient(135deg, #eff6ff, #fff); }
+.ot-payment-btn.ot-cash:hover { border-color: #10b981; background: linear-gradient(135deg, #f0fdf4, #fff); }
+
+.ot-payment-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.ot-payment-icon img { width: 100%; height: 100%; object-fit: cover; }
+
+.ot-icon-momo { background: linear-gradient(135deg, #a50064, #d90368); }
+.ot-icon-vnpay { background: linear-gradient(135deg, #0071c2, #0095ff); }
+.ot-icon-zalopay { background: linear-gradient(135deg, #0068ff, #4facfe); }
+.ot-icon-cash { background: linear-gradient(135deg, #10b981, #059669); color: #fff; }
+
+.ot-payment-fallback {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.ot-payment-content { flex: 1; min-width: 0; }
+
+.ot-payment-name {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #2c1810;
+  margin-bottom: 5px;
+}
+
+.ot-payment-desc { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.ot-payment-desc span {
+  font-size: 0.72rem;
+  color: #8a7a6d;
+  background: #faf7f2;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.ot-payment-tag {
+  padding: 5px 10px;
+  border-radius: 50px;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+}
+
+.ot-tag-hot { background: linear-gradient(135deg, #ff6b6b, #ff8e53); color: #fff; }
+.ot-tag-secure { background: linear-gradient(135deg, #4facfe, #00f2fe); color: #fff; }
+.ot-tag-promo { background: linear-gradient(135deg, #f093fb, #f5576c); color: #fff; }
+.ot-tag-classic { background: linear-gradient(135deg, #ffd89b, #f7c968); color: #5d4037; }
+
+.ot-payment-arrow {
+  font-size: 1.2rem;
+  color: #c8a27a;
+  font-weight: 700;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.ot-payment-btn:hover .ot-payment-arrow {
+  transform: translateX(4px);
+  color: #8b5e3c;
+}
+
+.ot-payment-security {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding: 16px;
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  border-radius: 14px;
+  border: 1px solid rgba(0, 200, 83, 0.2);
+}
+
+.ot-security-icons { display: flex; gap: 6px; font-size: 1.3rem; flex-shrink: 0; }
+
+.ot-security-icons span { animation: otFloatSmall 2s ease-in-out infinite; }
+.ot-security-icons span:nth-child(2) { animation-delay: 0.3s; }
+.ot-security-icons span:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes otFloatSmall {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.ot-security-title {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #166534;
+  margin-bottom: 3px;
+}
+
+.ot-security-desc {
+  font-size: 0.75rem;
+  color: #15803d;
+  line-height: 1.5;
+}
+
+/* =========================================
+   TIMELINE
+   ========================================= */
+
+.ot-timeline-card { position: sticky; top: 24px; }
+
+.ot-live-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  background: rgba(0, 200, 83, 0.1);
+  color: #00a843;
+  border: 1px solid rgba(0, 200, 83, 0.25);
+  border-radius: 50px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.ot-live-dot {
+  width: 6px;
+  height: 6px;
+  background: #00a843;
+  border-radius: 50%;
+  animation: otPulseDot 1.5s infinite;
+}
+
+@keyframes otPulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+
+.ot-timeline {
+  position: relative;
+  padding: 8px 0 0;
+}
+
+/* ---------- ITEM ---------- */
+.ot-timeline-item {
+  position: relative;
+  display: flex;
+  gap: 16px;
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: otFadeInUp 0.5s ease forwards;
+}
+
+.ot-timeline-item:nth-child(1) { animation-delay: 0.05s; }
+.ot-timeline-item:nth-child(2) { animation-delay: 0.1s; }
+.ot-timeline-item:nth-child(3) { animation-delay: 0.15s; }
+.ot-timeline-item:nth-child(4) { animation-delay: 0.2s; }
+.ot-timeline-item:nth-child(5) { animation-delay: 0.25s; }
+
+@keyframes otFadeInUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.ot-timeline-item:last-child { margin-bottom: 0; }
+
+/* ---------- LINE ---------- */
+.ot-timeline-item:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  left: 25px;
+  top: 58px;
+  width: 4px;
+  height: calc(100% + 10px);
+  background: #ece4d5;
+  border-radius: 10px;
+  z-index: 0;
+  transition: background 0.6s ease;
+}
+
+.ot-timeline-item.active:not(:last-child)::before {
+  background: linear-gradient(180deg, #8b5e3c 0%, #8b5e3c 60%, #c8a27a 100%);
+  box-shadow: 0 0 8px rgba(139, 94, 60, 0.3);
+}
+
+.ot-timeline-item.current:not(:last-child)::before {
+  background: linear-gradient(180deg, #8b5e3c 0%, #c8a27a 50%, #ece4d5 100%);
+  animation: otLineFlow 2s ease-in-out infinite;
+}
+
+@keyframes otLineFlow {
+  0%, 100% { box-shadow: 0 0 6px rgba(139, 94, 60, 0.3); }
+  50% { box-shadow: 0 0 16px rgba(139, 94, 60, 0.5); }
+}
+
+/* ---------- ICON ---------- */
+.ot-timeline-icon-wrapper {
+  position: relative;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.ot-timeline-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #faf7f2;
+  color: #c8a27a;
+  border: 3px solid #ece4d5;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 0 0 4px #fff;
+}
+
+.ot-timeline-item:not(.active) .ot-timeline-icon {
+  opacity: 0.55;
+  filter: grayscale(40%);
+}
+
+.ot-timeline-item.active .ot-timeline-icon {
+  background: linear-gradient(135deg, #8b5e3c 0%, #5d4037 100%);
+  color: #fff;
+  border-color: #8b5e3c;
+  opacity: 1;
+  filter: none;
+  box-shadow:
+    0 6px 16px rgba(139, 94, 60, 0.4),
+    0 0 0 4px #fff,
+    0 0 0 8px rgba(139, 94, 60, 0.08);
+  transform: scale(1.05);
+  animation: otIconPop 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes otIconPop {
+  0% { transform: scale(0.8); }
+  60% { transform: scale(1.15); }
+  100% { transform: scale(1.05); }
+}
+
+.ot-timeline-item.current .ot-timeline-icon {
+  background: linear-gradient(135deg, #8b5e3c 0%, #5d4037 100%);
+  color: #fff;
+  border-color: #8b5e3c;
+  animation: otCurrentPulse 2s infinite;
+}
+
+@keyframes otCurrentPulse {
+  0%, 100% {
+    box-shadow:
+      0 6px 16px rgba(139, 94, 60, 0.4),
+      0 0 0 4px #fff,
+      0 0 0 8px rgba(139, 94, 60, 0.15);
+    transform: scale(1.05);
+  }
+  50% {
+    box-shadow:
+      0 10px 24px rgba(139, 94, 60, 0.55),
+      0 0 0 4px #fff,
+      0 0 0 14px rgba(139, 94, 60, 0.08);
+    transform: scale(1.1);
+  }
+}
+
+.ot-timeline-item.current .ot-timeline-icon::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid rgba(139, 94, 60, 0.5);
+  animation: otRipple 2s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes otRipple {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* ---------- CHECK MARK ---------- */
+.ot-status-check {
+  position: absolute;
+  right: -4px;
+  top: -4px;
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, #00c853, #00a843);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  border: 2px solid #fff;
+  box-shadow: 0 4px 10px rgba(0, 168, 67, 0.45);
+  z-index: 3;
+  animation: otCheckPop 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes otCheckPop {
+  0% { transform: scale(0) rotate(-180deg); }
+  70% { transform: scale(1.2) rotate(10deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+/* ---------- CONTENT BOX ---------- */
+.ot-timeline-content {
+  flex: 1;
+  padding: 14px 18px;
+  background: #faf7f2;
+  border-radius: 14px;
+  border: 2px solid #ece4d5;
+  transition: all 0.4s ease;
+  min-width: 0;
+}
+
+.ot-timeline-item:not(.active) .ot-timeline-content {
+  opacity: 0.65;
+}
+
+.ot-timeline-item.active .ot-timeline-content {
+  background: #fff;
+  border-color: rgba(139, 94, 60, 0.3);
+  box-shadow: 0 4px 14px rgba(139, 94, 60, 0.08);
+  opacity: 1;
+}
+
+.ot-timeline-item.current .ot-timeline-content {
+  border-color: #8b5e3c;
+  border-width: 2px;
+  box-shadow:
+    0 8px 24px rgba(139, 94, 60, 0.15),
+    0 0 0 4px rgba(139, 94, 60, 0.06);
+  animation: otContentGlow 2s ease-in-out infinite;
+}
+
+@keyframes otContentGlow {
+  0%, 100% {
+    box-shadow:
+      0 8px 24px rgba(139, 94, 60, 0.15),
+      0 0 0 4px rgba(139, 94, 60, 0.06);
+  }
+  50% {
+    box-shadow:
+      0 12px 32px rgba(139, 94, 60, 0.25),
+      0 0 0 6px rgba(139, 94, 60, 0.1);
+  }
+}
+
+/* ---------- LABEL ---------- */
+.ot-timeline-label {
+  font-weight: 800;
+  color: #a89a8a;
+  font-size: 1rem;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s ease;
+}
+
+.ot-timeline-item.active .ot-timeline-label { color: #2c1810; }
+
+.ot-timeline-item.current .ot-timeline-label {
+  color: #8b5e3c;
+  font-weight: 900;
+}
+
+.ot-timeline-item.current .ot-timeline-label::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: #00c853;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(0, 200, 83, 0.6);
+  animation: otBlink 1.5s infinite;
+}
+
+@keyframes otBlink {
+  0% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(0, 200, 83, 0.6);
+  }
+  50% {
+    opacity: 0.6;
+    box-shadow: 0 0 0 6px rgba(0, 200, 83, 0);
+  }
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(0, 200, 83, 0);
+  }
+}
+
+/* ---------- TIME ---------- */
+.ot-timeline-time {
+  font-size: 0.82rem;
+  color: #a89a8a;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.ot-timeline-time::before {
+  content: "🕐";
+  font-size: 0.85rem;
+}
+
+.ot-timeline-item.active .ot-timeline-time { color: #8b5e3c; }
+
+/* ---------- DESCRIPTION ---------- */
+.ot-timeline-desc {
+  font-size: 0.82rem;
+  color: #8a7a6d;
+  line-height: 1.5;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.ot-timeline-item.active .ot-timeline-desc {
+  max-height: 60px;
+  opacity: 1;
+  margin-top: 4px;
+}
+
+/* ---------- PROGRESS ---------- */
+.ot-progress-section {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px dashed rgba(200, 162, 122, 0.3);
+}
+
+.ot-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  gap: 12px;
+}
+
+.ot-progress-text {
+  font-size: 0.85rem;
+  color: #5d4037;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ot-progress-percent {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #8b5e3c;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: -0.5px;
+  flex-shrink: 0;
+}
+
+.ot-progress-percent::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: #00a843;
+  border-radius: 50%;
+  animation: otBlink 1.5s infinite;
+}
+
+.ot-progress-track {
+  height: 12px;
+  background: #f0e2cc;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 2px 4px rgba(139, 94, 60, 0.1);
+}
+
+.ot-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #8b5e3c, #c8a27a 50%, #ffd700);
+  border-radius: 20px;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.ot-progress-fill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: otProgressShine 2s infinite;
+}
+
+@keyframes otProgressShine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.ot-estimated-time {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #fff8dc, #ffe8b3);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: #8b5e3c;
+  font-weight: 800;
+  border: 1px solid rgba(255, 179, 0, 0.3);
+}
+
+.ot-estimated-time svg { color: #cc8f00; flex-shrink: 0; }
+
+/* ---------- HELP ---------- */
+.ot-help-card { text-align: center; }
+
+.ot-help-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  color: #2c1810;
+  font-size: 1.05rem;
+  margin-bottom: 12px;
+}
+
+.ot-help-title-icon { font-size: 1.3rem; }
+
+.ot-help-desc {
+  font-size: 0.88rem;
+  color: #8a7a6d;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.ot-help-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.ot-help-btn {
+  position: relative;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: none;
+  font-weight: 800;
+  font-size: 0.88rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: inherit;
+}
+
+.ot-help-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+
+.ot-help-primary {
+  background: linear-gradient(135deg, #8b5e3c, #5d4037);
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(139, 94, 60, 0.25);
+}
+
+.ot-help-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(139, 94, 60, 0.35);
+}
+
+.ot-help-secondary {
+  background: #fff;
+  color: #8b5e3c;
+  border: 2px solid rgba(139, 94, 60, 0.3);
+}
+
+.ot-help-secondary:hover {
+  background: #faf7f2;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(139, 94, 60, 0.12);
+}
+
+.ot-badge-soon {
+  position: absolute;
+  top: -6px;
+  right: 8px;
+  background: #ffb300;
+  color: #fff;
+  font-size: 0.6rem;
+  padding: 2px 8px;
+  border-radius: 50px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 6px rgba(255, 179, 0, 0.4);
+}
+
+.ot-spin { animation: otSpin 1s linear infinite; }
+
+@keyframes otSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.ot-hotline-box {
+  padding: 14px 16px;
+  background: linear-gradient(135deg, #fffaf0, #fff3d6);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 179, 0, 0.3);
+  text-align: left;
+}
+
+.ot-hotline-title {
+  font-weight: 800;
+  color: #cc8f00;
+  font-size: 0.82rem;
+  margin-bottom: 5px;
+}
+
+.ot-hotline-number {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #5d4037;
+  letter-spacing: 0.5px;
+  margin-bottom: 3px;
+}
+
+.ot-hotline-note {
+  font-size: 0.72rem;
+  color: #8a7a6d;
+}
+
+/* ---------- LOADING ---------- */
+.ot-loading-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #faf7f2, #f5efe6);
+}
+
+.ot-coffee-loader {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 24px;
+}
+
+.ot-cup {
+  position: absolute;
+  width: 80px;
+  height: 60px;
+  background: linear-gradient(135deg, #8b4513, #654321);
+  border-radius: 0 0 40px 40px;
+  top: 20px;
+  left: 20px;
+  box-shadow: 0 8px 24px rgba(139, 69, 19, 0.3);
+}
+
+.ot-cup::before {
+  content: "";
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border: 5px solid #8b4513;
+  border-left: none;
+  border-radius: 0 15px 15px 0;
+  right: -28px;
+  top: 8px;
+}
+
+.ot-cup-saucer {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: 100px;
+  height: 8px;
+  background: linear-gradient(135deg, #654321, #4a3018);
+  border-radius: 50%;
+}
+
+.ot-steam {
+  position: absolute;
+  width: 8px;
+  height: 30px;
+  background: rgba(139, 94, 60, 0.4);
+  border-radius: 50%;
+  top: 0;
+  animation: otSteamAnim 2.4s ease-out infinite;
+}
+
+.ot-steam1 { left: 30px; animation-delay: 0s; }
+.ot-steam2 { left: 46px; animation-delay: 0.6s; }
+.ot-steam3 { left: 62px; animation-delay: 1.2s; }
+
+@keyframes otSteamAnim {
+  0% { transform: translateY(0) scaleX(1); opacity: 0; }
+  50% { transform: translateY(-25px) scaleX(1.3); opacity: 0.6; }
+  100% { transform: translateY(-50px) scaleX(0.8); opacity: 0; }
+}
+
+.ot-loading-text {
+  color: #5d4037;
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin: 0;
+  animation: otFadeInOut 2s infinite;
+}
+
+.ot-loading-subtext {
+  color: #8a7a6d;
+  font-size: 0.9rem;
+  margin-top: 8px;
+  opacity: 0.8;
+}
+
+@keyframes otFadeInOut {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* ---------- EMPTY ---------- */
+.ot-empty-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #faf7f2, #f5efe6);
+  text-align: center;
+}
+
+.ot-empty-icon {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, #fde8e8, #f9d5d5);
+  color: #cc0000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  box-shadow: 0 10px 30px rgba(204, 0, 0, 0.15);
+}
+
+.ot-empty-wrapper h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #2c1810;
+  margin: 0 0 8px;
+}
+
+.ot-empty-wrapper p {
+  color: #8a7a6d;
+  margin: 0 0 24px;
+}
+
+.ot-empty-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #8b5e3c, #5d4037);
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 16px rgba(139, 94, 60, 0.25);
+  font-family: inherit;
+}
+
+.ot-empty-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(139, 94, 60, 0.35);
+}
+
+/* ---------- SWEETALERT ---------- */
+.ot-toast {
+  font-weight: 700;
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+.swal2-timer-progress-bar { height: 4px; }
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+/* Tablet lớn */
+@media (max-width: 1200px) {
+  .ot-main-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .ot-timeline-card { position: static; }
+}
+
+/* Tablet */
+@media (max-width: 991px) {
+  .ot-wrapper { padding: 20px 0 80px; }
+  .ot-wrapper .container,
+  .ot-wrapper .container-fluid {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  .ot-card { padding: 22px; border-radius: 18px; }
+  .ot-order-number { font-size: 1.45rem; }
+  .ot-total-amount { font-size: 1.6rem; }
+  .ot-payment-total-amount { font-size: 1.8rem; }
+}
+
+/* ========== MOBILE LỚN — FIX CHÍNH ========== */
+@media (max-width: 767px) {
+  .ot-wrapper {
+    padding: 12px 0 90px;
+    overflow-x: hidden;
+  }
+
+  /* ✅ FIX: Container padding đều 2 bên */
+  .ot-wrapper .container,
+  .ot-wrapper .container-fluid {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* ✅ FIX: Grid collapse hoàn toàn */
+  .ot-main-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+    width: 100% !important;
+  }
+
+  /* ✅ FIX: Cột chiếm full width, không lệch */
+  .ot-left-col,
+  .ot-right-col {
+    width: 100% !important;
+    min-width: 0 !important;
+    gap: 14px !important;
+  }
+
+  /* ✅ FIX: Card không lệch */
+  .ot-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 16px !important;
+    border-radius: 14px !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* ===== TOP BAR ===== */
+  .ot-top-bar {
+    padding: 10px 14px;
+    border-radius: 14px;
+    gap: 8px;
+    margin-bottom: 14px;
+    width: 100% !important;
+    flex-wrap: nowrap;
+  }
+
+  .ot-brand {
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .ot-brand-divider { display: none; }
+
+  .ot-back-btn {
+    padding: 8px;
+    width: 38px;
+    height: 38px;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .ot-back-btn span { display: none; }
+
+  .ot-brand-icon {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+  }
+  .ot-brand-icon svg { width: 16px; height: 16px; }
+
+  .ot-brand-text {
+    min-width: 0;
+    overflow: hidden;
+    flex: 1;
+  }
+  .ot-brand-text h1 {
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .ot-brand-text span {
+    font-size: 0.6rem;
+    letter-spacing: 0.8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+  }
+
+  .ot-top-actions {
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .ot-icon-btn {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+  }
+  .ot-icon-btn svg { width: 16px; height: 16px; }
+
+  .ot-connection-badge span { display: none; }
+  .ot-connection-badge {
+    padding: 8px 10px;
+    min-width: 38px;
+    justify-content: center;
+  }
+
+  /* ===== CARD HEADER ===== */
+  .ot-card-header {
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+  }
+
+  .ot-card-title {
+    font-size: 0.95rem;
+    gap: 8px;
+  }
+  .ot-card-title svg { width: 18px; height: 18px; }
+
+  .ot-status-badge {
+    padding: 6px 12px;
+    font-size: 0.72rem;
+  }
+
+  /* ===== ORDER INFO ===== */
+  .ot-order-info {
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+  }
+
+  .ot-order-number {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+  }
+
+  .ot-order-meta {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .ot-meta-item { gap: 10px; }
+
+  .ot-meta-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+  }
+  .ot-meta-icon svg { width: 14px; height: 14px; }
+
+  .ot-meta-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.8px;
+  }
+
+  .ot-meta-value { font-size: 0.85rem; }
+
+  /* ===== NOTE ===== */
+  .ot-note-box {
+    padding: 12px;
+    gap: 10px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+  }
+  .ot-note-icon { font-size: 1.2rem; }
+  .ot-note-title { font-size: 0.72rem; }
+  .ot-note-text { font-size: 0.85rem; }
+
+  /* ===== ITEMS LIST ===== */
+  .ot-items-heading {
+    font-size: 0.78rem;
+    letter-spacing: 0.8px;
+    margin-bottom: 12px;
+  }
+  .ot-items-heading svg { width: 14px; height: 14px; }
+
+  .ot-item-row {
+    padding: 10px;
+    gap: 10px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+  }
+
+  .ot-item-img {
+    width: 46px;
+    height: 46px;
+    border-radius: 10px;
+  }
+
+  .ot-item-qty {
+    min-width: 20px;
+    height: 20px;
+    font-size: 0.65rem;
+    padding: 0 5px;
+    top: -5px;
+    right: -5px;
+  }
+
+  .ot-item-name { font-size: 0.85rem; }
+  .ot-item-unit { font-size: 0.72rem; }
+  .ot-item-total { font-size: 0.85rem; }
+
+  /* ===== TOTAL ===== */
+  .ot-total-box {
+    padding: 14px 16px;
+    border-radius: 12px;
+    margin: 16px 0;
+    gap: 8px;
+  }
+  .ot-total-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.5px;
+  }
+  .ot-total-amount { font-size: 1.2rem; }
+  .ot-total-currency { font-size: 0.8rem; }
+
+  /* ===== ACTION BUTTONS ===== */
+  .ot-action-buttons {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .ot-btn {
+    padding: 11px 14px;
+    font-size: 0.82rem;
+    border-radius: 12px;
+    gap: 6px;
+  }
+  .ot-btn svg { width: 16px; height: 16px; }
+
+  /* ===== TIMELINE ===== */
+  .ot-timeline { padding: 4px 0 0; }
+  .ot-timeline-item { gap: 10px; margin-bottom: 20px; }
+  .ot-timeline-icon { width: 44px; height: 44px; border-width: 2px; }
+  .ot-timeline-icon svg { width: 18px; height: 18px; }
+  .ot-timeline-item:not(:last-child)::before {
+    left: 20px;
+    top: 48px;
+    width: 3px;
+  }
+  .ot-timeline-item.current .ot-timeline-icon::after { inset: -4px; }
+  .ot-status-check {
+    width: 20px;
+    height: 20px;
+    right: -3px;
+    top: -3px;
+  }
+  .ot-status-check svg { width: 10px; height: 10px; }
+  .ot-timeline-content {
+    padding: 12px 14px;
+    border-radius: 12px;
+  }
+  .ot-timeline-label { font-size: 0.88rem; margin-bottom: 3px; }
+  .ot-timeline-time { font-size: 0.72rem; }
+  .ot-timeline-desc { font-size: 0.72rem; }
+
+  /* ===== PROGRESS ===== */
+  .ot-progress-section { margin-top: 20px; padding-top: 18px; }
+  .ot-progress-text { font-size: 0.78rem; }
+  .ot-progress-percent { font-size: 1.2rem; }
+  .ot-progress-track { height: 10px; }
+  .ot-estimated-time {
+    font-size: 0.78rem;
+    padding: 10px 12px;
+    gap: 8px;
+  }
+  .ot-estimated-time svg { width: 14px; height: 14px; }
+
+  /* ===== HELP ===== */
+  .ot-help-title { font-size: 0.95rem; }
+  .ot-help-desc { font-size: 0.8rem; }
+  .ot-help-buttons { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .ot-help-btn {
+    padding: 11px 12px;
+    font-size: 0.78rem;
+    gap: 6px;
+    border-radius: 12px;
+  }
+  .ot-help-btn svg { width: 16px; height: 16px; }
+  .ot-hotline-box { padding: 12px; }
+  .ot-hotline-title { font-size: 0.75rem; }
+  .ot-hotline-number { font-size: 1rem; }
+  .ot-hotline-note { font-size: 0.68rem; }
+
+  /* ===== PAYMENT ===== */
+  .ot-payment-header {
+    gap: 10px;
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+  }
+  .ot-payment-header-icon { width: 40px; height: 40px; border-radius: 12px; }
+  .ot-payment-header-icon svg { width: 20px; height: 20px; }
+  .ot-payment-title { font-size: 0.95rem; }
+  .ot-payment-subtitle { font-size: 0.75rem; }
+  .ot-payment-total {
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+  }
+  .ot-payment-total-label { font-size: 0.7rem; letter-spacing: 1px; }
+  .ot-payment-total-amount { font-size: 1.5rem; }
+  .ot-payment-total-amount span { font-size: 0.9rem; }
+
+  .ot-payment-methods { gap: 10px; margin-bottom: 16px; }
+  .ot-payment-btn {
+    padding: 12px;
+    gap: 10px;
+    border-radius: 12px;
+  }
+  .ot-payment-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+  }
+  .ot-payment-name { font-size: 0.85rem; }
+  .ot-payment-desc { flex-direction: column; gap: 3px; }
+  .ot-payment-desc span { font-size: 0.65rem; padding: 2px 6px; }
+  .ot-payment-tag { display: none; }
+  .ot-payment-arrow { font-size: 1rem; }
+
+  .ot-payment-security {
+    padding: 12px;
+    gap: 10px;
+    border-radius: 12px;
+    flex-wrap: wrap;
+  }
+  .ot-security-icons { font-size: 1.1rem; gap: 4px; }
+  .ot-security-title { font-size: 0.75rem; }
+  .ot-security-desc { font-size: 0.65rem; }
+
+  /* ===== LOADING ===== */
+  .ot-loading-text { font-size: 1rem; }
+  .ot-loading-subtext { font-size: 0.8rem; }
+  .ot-coffee-loader { width: 100px; height: 100px; }
+
+  /* ===== EMPTY ===== */
+  .ot-empty-icon { width: 80px; height: 80px; }
+  .ot-empty-wrapper h2 { font-size: 1.2rem; }
+  .ot-empty-wrapper p { font-size: 0.85rem; }
+  .ot-empty-btn { padding: 12px 22px; font-size: 0.85rem; }
+
+  /* ===== CONNECTION STATUS ===== */
+  .ot-connection-status {
+    top: 8px;
+    right: 8px;
+    left: 8px;
+    padding: 8px 12px;
+    font-size: 0.75rem;
+    justify-content: center;
+  }
+}
+
+/* ========== MOBILE NHỎ ========== */
+@media (max-width: 480px) {
+  .ot-wrapper { padding: 10px 0 88px; }
+
+  .ot-wrapper .container,
+  .ot-wrapper .container-fluid {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .ot-top-bar { padding: 8px 12px; }
+  .ot-back-btn { width: 36px; height: 36px; }
+  .ot-brand-icon { width: 34px; height: 34px; }
+  .ot-brand-icon svg { width: 15px; height: 15px; }
+  .ot-brand-text h1 { font-size: 0.85rem; }
+  .ot-brand-text span { font-size: 0.55rem; letter-spacing: 0.5px; }
+  .ot-icon-btn { width: 36px; height: 36px; }
+
+  .ot-card { padding: 14px !important; border-radius: 12px !important; }
+
+  .ot-order-number { font-size: 1.1rem; }
+  .ot-meta-value { font-size: 0.8rem; }
+
+  .ot-item-img { width: 42px; height: 42px; }
+  .ot-item-name { font-size: 0.82rem; }
+  .ot-item-unit { font-size: 0.68rem; }
+  .ot-item-total { font-size: 0.82rem; }
+
+  .ot-total-box { padding: 12px 14px; }
+  .ot-total-label { font-size: 0.72rem; }
+  .ot-total-amount { font-size: 1.1rem; }
+
+  .ot-btn { padding: 10px 12px; font-size: 0.78rem; }
+
+  /* Timeline */
+  .ot-timeline-item { gap: 10px; margin-bottom: 16px; }
+  .ot-timeline-icon { width: 40px; height: 40px; }
+  .ot-timeline-icon svg { width: 16px; height: 16px; }
+  .ot-timeline-item:not(:last-child)::before {
+    left: 18px;
+    top: 44px;
+  }
+  .ot-timeline-content { padding: 10px 12px; border-radius: 10px; }
+  .ot-timeline-label { font-size: 0.82rem; }
+  .ot-timeline-desc { font-size: 0.7rem; }
+
+  /* Ẩn description bước chưa active */
+  .ot-timeline-item:not(.current):not(.active) .ot-timeline-desc {
+    display: none;
+  }
+
+  /* Payment */
+  .ot-payment-icon { width: 40px; height: 40px; }
+  .ot-payment-name { font-size: 0.8rem; }
+  .ot-payment-btn { padding: 11px; }
+  .ot-payment-total-amount { font-size: 1.3rem; }
+}
+
+/* ========== MOBILE RẤT NHỎ ========== */
+@media (max-width: 380px) {
+  .ot-wrapper .container,
+  .ot-wrapper .container-fluid {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  .ot-timeline-item { gap: 8px; }
+  .ot-timeline-icon { width: 36px; height: 36px; }
+  .ot-timeline-icon svg { width: 14px; height: 14px; }
+  .ot-timeline-item:not(:last-child)::before {
+    left: 16px;
+    top: 40px;
+  }
+  .ot-timeline-label { font-size: 0.78rem; }
+  .ot-timeline-time { font-size: 0.68rem; }
+
+  .ot-help-buttons { grid-template-columns: 1fr; }
+  .ot-action-buttons { grid-template-columns: 1fr; }
+}
+
+
+
+/* =========================================
+   PAYMENT SUCCESS CARD
+   Hiển thị khi đơn hàng đã thanh toán thành công
+   ========================================= */
+   .ot-payment-success-card {
+    background: linear-gradient(180deg, #f0fdf4 0%, #dcfce7 100%);
+    border: 2px solid rgba(0, 200, 83, 0.3);
+    overflow: hidden;
+    position: relative;
+    animation: otSuccessFadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  @keyframes otSuccessFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .ot-payment-success-card::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 200, 83, 0.08) 0%, transparent 60%);
+    animation: otShimmer 6s linear infinite;
+    pointer-events: none;
+  }
+  
+  .ot-payment-success-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+  
+  .ot-payment-success-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 18px;
+    background: linear-gradient(135deg, #00c853, #00a843);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(0, 168, 67, 0.35);
+    animation: otCheckPop 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .ot-payment-success-title {
+    font-size: 1.35rem;
+    font-weight: 900;
+    color: #166534;
+    margin: 0 0 8px;
+    letter-spacing: -0.3px;
+  }
+  
+  .ot-payment-success-desc {
+    font-size: 0.9rem;
+    color: #15803d;
+    line-height: 1.5;
+    margin: 0 auto 24px;
+    max-width: 420px;
+  }
+  
+  .ot-payment-success-info {
+    background: #fff;
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 18px;
+    border: 1px solid rgba(0, 200, 83, 0.2);
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(0, 168, 67, 0.08);
+  }
+  
+  .ot-payment-success-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    gap: 12px;
+    border-bottom: 1px dashed rgba(0, 200, 83, 0.15);
+  }
+  
+  .ot-payment-success-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  
+  .ot-payment-success-row:first-child {
+    padding-top: 0;
+  }
+  
+  .ot-payment-success-label {
+    font-size: 0.85rem;
+    color: #6b5b4d;
+    font-weight: 700;
+  }
+  
+  .ot-payment-success-value {
+    font-size: 0.9rem;
+    color: #2c1810;
+    font-weight: 800;
+    text-align: right;
+  }
+  
+  .ot-payment-success-total {
+    padding-top: 12px !important;
+    margin-top: 6px;
+    border-top: 2px solid rgba(0, 200, 83, 0.2) !important;
+    border-bottom: none !important;
+  }
+  
+  .ot-payment-success-amount {
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: #00a843;
+    letter-spacing: -0.5px;
+  }
+  
+  .ot-payment-success-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    background: linear-gradient(135deg, #00c853, #00a843);
+    color: #fff;
+    border-radius: 50px;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    box-shadow: 0 6px 16px rgba(0, 168, 67, 0.3);
+  }
+  
+  /* =========================================
+     RESPONSIVE - PAYMENT SUCCESS
+     ========================================= */
+  @media (max-width: 767px) {
+    .ot-payment-success-icon {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 14px;
+    }
+  
+    .ot-payment-success-icon svg {
+      width: 36px;
+      height: 36px;
+    }
+  
+    .ot-payment-success-title {
+      font-size: 1.1rem;
+    }
+  
+    .ot-payment-success-desc {
+      font-size: 0.82rem;
+      margin-bottom: 18px;
+    }
+  
+    .ot-payment-success-info {
+      padding: 14px 16px;
+      border-radius: 12px;
+    }
+  
+    .ot-payment-success-row {
+      padding: 8px 0;
+    }
+  
+    .ot-payment-success-label {
+      font-size: 0.78rem;
+    }
+  
+    .ot-payment-success-value {
+      font-size: 0.82rem;
+    }
+  
+    .ot-payment-success-amount {
+      font-size: 1.1rem;
+    }
+  
+    .ot-payment-success-badge {
+      font-size: 0.75rem;
+      padding: 6px 14px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .ot-payment-success-icon {
+      width: 56px;
+      height: 56px;
+    }
+  
+    .ot-payment-success-icon svg {
+      width: 30px;
+      height: 30px;
+    }
+  
+    .ot-payment-success-title {
+      font-size: 1rem;
+    }
+  
+    .ot-payment-success-desc {
+      font-size: 0.78rem;
+    }
+  
+    .ot-payment-success-info {
+      padding: 12px 14px;
+    }
+  
+    .ot-payment-success-amount {
+      font-size: 1rem;
+    }
+  }

@@ -1,0 +1,13 @@
+# robots.txt for coffee-shop-user
+# Website: Coffee Shop
+# Last updated: 2026-10-07
+
+# Cho phép tất cả crawler
+User-agent: *
+Allow: /
+
+# Không index các trang không cần thiết (nếu có)
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /login/
+Disallow: /register/
